@@ -72,7 +72,7 @@ public class TwoWayConnector {
                         }
                     }, connectionTimeout);
                 } catch(TimeoutException e) {
-                    displayMessage("Connection to "+hostname+" timed out after "+ connectionTimeout +" seconds");
+                    displayMessage("ClientConnection to "+hostname+" timed out after "+ connectionTimeout +" seconds");
                 }
             }
         }).start();
