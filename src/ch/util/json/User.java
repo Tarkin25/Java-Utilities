@@ -1,4 +1,4 @@
-package random;
+package ch.util.json;
 
 public class User {
 
