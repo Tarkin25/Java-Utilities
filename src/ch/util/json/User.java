@@ -2,9 +2,19 @@ package ch.util.json;
 
 public class User {
 
+    @JsonProperty
     private String name;
+
+    @JsonProperty
     private String email;
+
+    @JsonProperty
     private boolean gay;
+
+    @JsonProperty
+    private Car car;
+
+    private Integer[] numbers = new Integer[]{1,2,3,4,5};
 
     public User(String name, String email, boolean gay) {
         this.name = name;
@@ -12,27 +22,9 @@ public class User {
         this.gay = gay;
     }
 
-    public String getName() {
-        return name;
-    }
+    public User() {}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isGay() {
-        return gay;
-    }
-
-    public void setGay(boolean gay) {
-        this.gay = gay;
+    public String toString() {
+        return "Name: "+name+" Email: "+email+" Gay: "+gay+" Car licence: "+car.getLicence();
     }
 }

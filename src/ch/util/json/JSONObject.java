@@ -1,71 +1,71 @@
 package ch.util.json;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class JSONObject {
+/**
+ * @author Severin Weigold
+ */
+
+public class JSONObject implements Map<String, Object> {
 
     private Map<String, JSONField> map = new HashMap<>();
 
-    private Class clas;
-
     public JSONObject(Object object) {
-        this.clas = object.getClass();
+        JSONBuilder.setJsonFields(this, object);
+    }
 
-        if(clas.isArray()) {
+    public JSONObject(String json) {
+        //TODO parse json String
+    }
 
+    public JSONObject(File file) throws IOException {
+        StringBuilder sb = new StringBuilder();
+
+        FileInputStream inputStream = new FileInputStream(file);
+
+        Scanner scanner = new Scanner(inputStream);
+
+        while(scanner.hasNextLine()) {
+            sb.append(scanner.nextLine());
         }
 
-        for(Field field : clas.getFields()) {
-            try {
-                String fieldName = field.getName();
-
-                Object value = getValue(field, object);
-
-                set(fieldName, value);
-            } catch (IllegalAccessException e) {}
-        }
-
-        for(Field field : clas.getDeclaredFields()) {
-            try {
-                String fieldName = field.getName();
-
-                try {
-                    String methodName = getMethodName(field);
-
-                    Method getterMethod = clas.getMethod(methodName);
-
-                    Object value = getValue(getterMethod, object);
-
-                    set(fieldName, value);
-                } catch (NoSuchMethodException | InvocationTargetException e) {}
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
+        //TODO parse json String
     }
 
     public JSONObject() {}
 
-    public void set(String field, Object o) {
-        if((o != null && o.getClass().isArray()) || isOfSimpleType(o)) {
-            map.put(field, new JSONField<>(o));
+    public Object put(String field, Object o) {
+        JSONField jsonField;
+
+        if(o != null && o.getClass().isArray()) {
+            jsonField = map.put(field, new JSONField<>(new JSONArray(o)));
+        } else if(isOfSimpleType(o)) {
+            jsonField = map.put(field, new JSONField<>(o));
         } else {
-            map.put(field, new JSONField<>(new JSONObject(o)));
+            jsonField = map.put(field, new JSONField<>(new JSONObject(o)));
+        }
+
+        if(jsonField != null) {
+            return jsonField.getValue();
+        } else {
+            return null;
         }
     }
 
     public <T> T get(String field) {
         JSONField jsonField = map.get(field);
 
-        Class<T> clas = jsonField.getType();
+        Class<T> clazz = jsonField.getType();
 
         Object value = jsonField.getValue();
 
-        T result = clas.cast(value);
+        T result = clazz.cast(value);
 
         return result;
     }
@@ -80,38 +80,12 @@ public class JSONObject {
         return fields;
     }
 
-    private static String getMethodName(Field field) {
-        String methodName;
-
-        String fieldName = field.getName();
-
-        Class type = field.getType();
-
-        String methodPrefix;
-
-        if(type != Boolean.TYPE) {
-            methodPrefix = "get";
-        } else {
-            methodPrefix = "is";
-        }
-
-        String firstLetter = fieldName.substring(0, 1).toUpperCase();
-
-        methodName = methodPrefix + firstLetter + fieldName.substring(1);
-
-        return methodName;
-    }
-
-    private static Object getValue(Field field, Object object) throws IllegalAccessException {
-        return field.get(object);
-    }
-
-    private static Object getValue(Method method, Object object) throws IllegalAccessException, InvocationTargetException {
-        return method.invoke(object);
-    }
-
     static boolean isOfSimpleType(Object o) {
         return o instanceof String || o instanceof Boolean || o instanceof Character || o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long || o instanceof Float || o instanceof Double || o == null;
+    }
+
+    public <T> T cast(Class<T> clas) {
+        return JSONBuilder.cast(this, clas);
     }
 
     public String toString() {
@@ -123,19 +97,7 @@ public class JSONObject {
 
             Object value = map.get(field).getValue();
 
-            if(value != null && value.getClass().isArray()) {
-                Object[] array = (Object[])value;
-
-                sb.append("[");
-
-                for(Object object : array) {
-                    sb.append(object).append(",");
-                }
-
-                sb.setLength(sb.length()-1);
-
-                sb.append("]");
-            } else if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JSONObject) {
+            if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JSONObject || value instanceof JSONArray) {
                 sb.append(value);
             } else {
                 sb.append("\"").append(value).append("\"");
@@ -150,16 +112,81 @@ public class JSONObject {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        User user1 = new User("Max Muster", "max.muster@example.com", true);
-        User user2 = new User("Hans Heiri", "hans.heiri@example.com", false);
+    @Override
+    public int size() {
+        return map.size();
+    }
 
-        JSONObject json = new JSONObject();
-        json.set("users", new User[]{user1, user2});
-        json.set("car", new Car(12345, "Max Muster", "ZH 5678"));
-        json.set("array", new Integer[]{1,2,3,4,5});
+    @Override
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
 
-        System.out.println(json);
+    @Override
+    public boolean containsKey(Object key) {
+        return map.containsKey(key);
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        for(JSONField field : map.values()) {
+            if(field.getValue().equals(value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public Object get(Object key) {
+        return get(key.toString());
+    }
+
+    @Override
+    public Object remove(Object key) {
+        return map.remove(key);
+    }
+
+    @Override
+    public void putAll(Map<? extends String, ?> m) {
+        //TODO putAll
+
+        for(String field : m.keySet()) {
+            put(field, m.get(field));
+        }
+    }
+
+    @Override
+    public void clear() {
+        map.clear();
+    }
+
+    @Override
+    public Set<String> keySet() {
+        return map.keySet();
+    }
+
+    @Override
+    public Collection<Object> values() {
+        Collection<Object> values = new ArrayList<>();
+
+        for(String field : keySet()) {
+            values.add(get(field));
+        }
+
+        return values;
+    }
+
+    @Override
+    public Set<Entry<String, Object>> entrySet() {
+        Set<Entry<String, Object>> entrySet = new HashSet<>();
+
+        for(String field : keySet()) {
+            entrySet.add(new AbstractMap.SimpleEntry<>(field, get(field)));
+        }
+
+        return entrySet;
     }
 
 }
