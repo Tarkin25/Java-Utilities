@@ -4,12 +4,12 @@ package ch.util.json;
  * @author Severin Weigold
  */
 
-public class JSONField<T> {
+public class JsonField<T> {
 
     private Class type;
     private T value;
 
-    JSONField(T value) {
+    JsonField(T value) {
         this.value = value;
         if(value != null) {
             this.type = value.getClass();

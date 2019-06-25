@@ -18,7 +18,7 @@ public class ClientConnection {
         this(hostname, port, 5);
     }
 
-    public ClientConnection(final String hostname, final int port, float timeout) throws TimeoutException {
+    public ClientConnection(String hostname, int port, float timeout) throws TimeoutException {
         ThreadUtil.runTimeoutThread(()->{
             try {
                 socket = new Socket(hostname, port);

@@ -3,28 +3,25 @@ package ch.util.json;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 
 /**
  * @author Severin Weigold
  */
 
-public class JSONObject implements Map<String, Object> {
+public class JsonObject implements Map<String, Object> {
 
-    private Map<String, JSONField> map = new HashMap<>();
+    private Map<String, JsonField> map = new HashMap<>();
 
-    public JSONObject(Object object) {
-        JSONBuilder.setJsonFields(this, object);
+    public JsonObject(Object object) {
+        JsonBuilder.setJsonFields(this, object);
     }
 
-    public JSONObject(String json) {
-        //TODO parse json String
+    public JsonObject(String json) {
+        //TODO parseJsonObject json String
     }
 
-    public JSONObject(File file) throws IOException {
+    public JsonObject(File file) throws IOException {
         StringBuilder sb = new StringBuilder();
 
         FileInputStream inputStream = new FileInputStream(file);
@@ -35,20 +32,20 @@ public class JSONObject implements Map<String, Object> {
             sb.append(scanner.nextLine());
         }
 
-        //TODO parse json String
+        //TODO parseJsonObject json String
     }
 
-    public JSONObject() {}
+    public JsonObject() {}
 
     public Object put(String field, Object o) {
-        JSONField jsonField;
+        JsonField jsonField;
 
         if(o != null && o.getClass().isArray()) {
-            jsonField = map.put(field, new JSONField<>(new JSONArray(o)));
-        } else if(isOfSimpleType(o)) {
-            jsonField = map.put(field, new JSONField<>(o));
+            jsonField = map.put(field, new JsonField<>(new JsonArray(o)));
+        } else if(isOfSimpleType(o) || o instanceof JsonObject) {
+            jsonField = map.put(field, new JsonField<>(o));
         } else {
-            jsonField = map.put(field, new JSONField<>(new JSONObject(o)));
+            jsonField = map.put(field, new JsonField<>(new JsonObject(o)));
         }
 
         if(jsonField != null) {
@@ -59,15 +56,19 @@ public class JSONObject implements Map<String, Object> {
     }
 
     public <T> T get(String field) {
-        JSONField jsonField = map.get(field);
+        JsonField jsonField = map.get(field);
 
-        Class<T> clazz = jsonField.getType();
+        if(jsonField != null) {
+            Class<T> clazz = jsonField.getType();
 
-        Object value = jsonField.getValue();
+            Object value = jsonField.getValue();
 
-        T result = clazz.cast(value);
+            T result = clazz.cast(value);
 
-        return result;
+            return result;
+        } else {
+            return null;
+        }
     }
 
     public Map<String, Class> getFields() {
@@ -85,7 +86,7 @@ public class JSONObject implements Map<String, Object> {
     }
 
     public <T> T cast(Class<T> clas) {
-        return JSONBuilder.cast(this, clas);
+        return JsonBuilder.cast(this, clas);
     }
 
     public String toString() {
@@ -97,7 +98,7 @@ public class JSONObject implements Map<String, Object> {
 
             Object value = map.get(field).getValue();
 
-            if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JSONObject || value instanceof JSONArray) {
+            if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JsonObject || value instanceof JsonArray) {
                 sb.append(value);
             } else {
                 sb.append("\"").append(value).append("\"");
@@ -129,7 +130,7 @@ public class JSONObject implements Map<String, Object> {
 
     @Override
     public boolean containsValue(Object value) {
-        for(JSONField field : map.values()) {
+        for(JsonField field : map.values()) {
             if(field.getValue().equals(value)) {
                 return true;
             }

@@ -2,9 +2,16 @@ package ch.util.json;
 
 public class Car {
 
-    public int factoryNumber;
-    public String owner;
-    public String licence;
+    @JsonProperty
+    private int factoryNumber;
+
+    @JsonProperty
+    private String owner;
+
+    @JsonProperty
+    private String licence;
+
+    public Car() {}
 
     public Car(int factoryNumber, String owner, String licence) {
         this.factoryNumber = factoryNumber;

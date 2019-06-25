@@ -2,19 +2,19 @@ package ch.util.json;
 
 import java.util.*;
 
-import static ch.util.json.JSONObject.isOfSimpleType;
+import static ch.util.json.JsonObject.isOfSimpleType;
 
 /**
  * @author Severin Weigold
  */
 
-public class JSONArray implements List<Object> {
+public class JsonArray implements List<Object> {
 
     private List<Object> array = new ArrayList<>();
 
     private Class originalType;
 
-    JSONArray(Object object) {
+    JsonArray(Object object) {
         if(object != null && object.getClass().isArray()) {
             originalType = object.getClass();
 
@@ -116,11 +116,11 @@ public class JSONArray implements List<Object> {
     @Override
     public boolean add(Object o) {
         if(o.getClass().isArray()) {
-            return array.add(new JSONArray(o));
+            return array.add(new JsonArray(o));
         } else if(isOfSimpleType(o)) {
             return array.add(o);
         } else {
-            return array.add(new JSONObject(o));
+            return array.add(new JsonObject(o));
         }
     }
 
@@ -182,11 +182,11 @@ public class JSONArray implements List<Object> {
         if(o.getClass().isArray()) {
             Object[] newArray = (Object[]) o;
 
-            return array.set(index, new JSONArray(newArray));
+            return array.set(index, new JsonArray(newArray));
         } else if(isOfSimpleType(o)) {
             return array.set(index, o);
         } else {
-            return array.set(index, new JSONObject(o));
+            return array.set(index, new JsonObject(o));
         }
     }
 
@@ -195,11 +195,11 @@ public class JSONArray implements List<Object> {
         if(o.getClass().isArray()) {
             Object[] newArray = (Object[]) o;
 
-            array.add(index, new JSONArray(newArray));
+            array.add(index, new JsonArray(newArray));
         } else if(isOfSimpleType(o)) {
             array.add(index, o);
         } else {
-            array.add(index, new JSONObject(o));
+            array.add(index, new JsonObject(o));
         }
     }
 

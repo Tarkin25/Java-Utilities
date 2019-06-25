@@ -27,4 +27,8 @@ public class User {
     public String toString() {
         return "Name: "+name+" Email: "+email+" Gay: "+gay+" Car licence: "+car.getLicence();
     }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 }

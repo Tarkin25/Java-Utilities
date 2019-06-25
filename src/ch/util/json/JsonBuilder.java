@@ -4,14 +4,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static ch.util.json.JSONObject.isOfSimpleType;
+import static ch.util.json.JsonObject.isOfSimpleType;
 
 /**
  * @author Severin Weigold
  */
-public class JSONBuilder {
+public class JsonBuilder {
 
-    static <T> T cast(JSONObject object, Class<T> clazz) {
+    static <T> T cast(JsonObject object, Class<T> clazz) {
         try {
             T result = clazz.newInstance();
 
@@ -27,13 +27,15 @@ public class JSONBuilder {
                         fieldName = field.getName();
                     }
 
+                    System.out.println(fieldName);
+
                     field.setAccessible(true);
 
                     try {
                         value = object.get(fieldName);
 
                         if(!isOfSimpleType(value)) {
-                            value = new JSONObject(value).cast(field.getType());
+                            value = new JsonObject(value).cast(field.getType());
                         }
 
                         field.set(result, value);
@@ -42,13 +44,13 @@ public class JSONBuilder {
                     fieldName = field.getName();
 
                     if(field.isAccessible()) {
+                        System.out.println("Field "+fieldName+" is public");
+
                         value = object.get(fieldName);
 
                         if(!isOfSimpleType(value)) {
-                            value = new JSONObject(value).cast(value.getClass());
+                            value = new JsonObject(value).cast(field.getType());
                         }
-
-                        field.set(result, value);
 
                         field.set(result, value);
                     } else {
@@ -60,24 +62,25 @@ public class JSONBuilder {
                             value = object.get(fieldName);
 
                             if(!isOfSimpleType(value)) {
-                                value = new JSONObject(value).cast(value.getClass());
+                                value = new JsonObject(value).cast(field.getType());
                             }
 
-                            field.set(result, value);
-
                             setterMethod.invoke(result, value);
-                        } catch (NoSuchMethodException | InvocationTargetException e) {}
+                        } catch (NoSuchMethodException | InvocationTargetException e) {
+                        }
                     }
                 }
             }
 
             return result;
-        } catch (IllegalAccessException |InstantiationException e) {}
+        } catch (IllegalAccessException |InstantiationException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
 
-    static void setJsonFields(JSONObject json, Object object) {
+    static void setJsonFields(JsonObject json, Object object) {
         for(Field field : object.getClass().getDeclaredFields()) {
             if(field.isAnnotationPresent(JsonProperty.class)) {
                 String fieldName = field.getAnnotation(JsonProperty.class).value();
