@@ -101,7 +101,7 @@ public class ProgressBar {
     
     public static void main(String[] args) {
         
-        ProgressBar pb = new ProgressBar(50, 100, "cyan");
+        ProgressBar pb = new ProgressBar(90, 100, "cyan");
         
         for(int i=1;i<=100;i++) {
             pb.setProgress(i);

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class InsertQueue<T extends DatabaseObject> {
 
-    private List<T> values = new ArrayList<T>();
+    private List<T> values = new ArrayList<>();
 
     private StringBuilder sql = new StringBuilder();
     

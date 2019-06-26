@@ -1,7 +1,6 @@
 package ch.util.json;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
@@ -17,25 +16,15 @@ public class JsonObject implements Map<String, Object> {
         JsonBuilder.setJsonFields(this, object);
     }
 
-    public JsonObject(String json) {
-        //TODO parseJsonObject json String
-    }
-
-    public JsonObject(File file) throws IOException {
-        StringBuilder sb = new StringBuilder();
-
-        FileInputStream inputStream = new FileInputStream(file);
-
-        Scanner scanner = new Scanner(inputStream);
-
-        while(scanner.hasNextLine()) {
-            sb.append(scanner.nextLine());
-        }
-
-        //TODO parseJsonObject json String
-    }
-
     public JsonObject() {}
+
+    public static JsonObject parse(String jsonString) {
+        return JsonParser.parseJsonObject(jsonString);
+    }
+
+    public static JsonObject parse(File file) throws IOException {
+        return JsonParser.parseJsonObject(file);
+    }
 
     public Object put(String field, Object o) {
         JsonField jsonField;

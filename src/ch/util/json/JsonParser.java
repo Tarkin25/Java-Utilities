@@ -2,12 +2,12 @@ package ch.util.json;
 
 import ch.util.strings.StringUtils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
 
-public class JsonParser {
+class JsonParser {
 
     private static Set<Character> escapes = new HashSet<>();
 
@@ -45,6 +45,18 @@ public class JsonParser {
         }
 
         return json;
+    }
+
+    static JsonObject parseJsonObject(File file) throws IOException {
+        Scanner scanner = new Scanner(new FileInputStream(file));
+
+        StringBuilder sb = new StringBuilder();
+
+        while(scanner.hasNextLine()) {
+            sb.append(scanner.nextLine()).append("\n");
+        }
+
+        return parseJsonObject(sb.toString());
     }
 
     private static Object parseValue(String s) {
@@ -179,7 +191,7 @@ public class JsonParser {
         return strings;
     }
 
-    static String trimJsonString(String s) {
+    private static String trimJsonString(String s) {
         boolean ignoreEscapes = false;
 
         StringBuilder sb = new StringBuilder(s);
