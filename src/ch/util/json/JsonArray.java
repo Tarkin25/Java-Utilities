@@ -117,7 +117,7 @@ public class JsonArray implements List<Object> {
     public boolean add(Object o) {
         if(o.getClass().isArray()) {
             return array.add(new JsonArray(o));
-        } else if(isOfSimpleType(o)) {
+        } else if(isOfSimpleType(o) || o instanceof JsonObject || o instanceof JsonArray) {
             return array.add(o);
         } else {
             return array.add(new JsonObject(o));
@@ -196,7 +196,7 @@ public class JsonArray implements List<Object> {
             Object[] newArray = (Object[]) o;
 
             array.add(index, new JsonArray(newArray));
-        } else if(isOfSimpleType(o)) {
+        } else if(isOfSimpleType(o) || o instanceof JsonObject || o instanceof JsonArray) {
             array.add(index, o);
         } else {
             array.add(index, new JsonObject(o));
@@ -237,8 +237,14 @@ public class JsonArray implements List<Object> {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
 
-        for(Object o : array) {
-            sb.append(o).append(",");
+        for(Object value : array) {
+            if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JsonObject || value instanceof JsonArray) {
+                sb.append(value.toString());
+            } else {
+                sb.append("\"").append(value).append("\"");
+            }
+
+            sb.append(",");
         }
 
         sb.setLength(sb.length()-1);

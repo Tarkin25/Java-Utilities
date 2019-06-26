@@ -8,21 +8,32 @@ public class Test {
         user1.setCar(new Car(123, "Hansli", "ZH 4859"));
         User user2 = new User("Hans Heiri", "hans.heiri@example.com", false);
 
-        JsonObject json = new JsonObject();
-        json.put("name", "Max Muster");
+        String unformatedJson = "{\n" +
+                "  \"array\": [\n" +
+                "    \"Hello\",\n" +
+                "    \"World\",\n" +
+                "    {\n" +
+                "      \"name\": \"Test\"\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"name\": \"Max Muster\",\n" +
+                "  \"car\": {\n" +
+                "    \"licence\": \"ZH 12345\",\n" +
+                "    \"number\": 123\n" +
+                "  },\n" +
+                "  \"test\": {\n" +
+                "    \"name\": \"test\",\n" +
+                "    \"age\": 12,\n" +
+                "    \"anothertest\": {\n" +
+                "      \"name\": \"anothertest\",\n" +
+                "      \"number\": 123\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
 
-        JsonObject car = new JsonObject();
-        car.put("owner", "Hansli");
-        car.put("number", 123);
-        car.put("licence", "ZH 784");
+        String json = "{\"array\":[\"Hello Blyat!\",\"World\",{\"name\":\"Test\"}],\"name\":\"Max Muster\",\"car\":{\"licence\":\"ZH 12345\",\"number\": 123},\"test\":{\"name\":\"test\",\"age\":12,\"anothertest\": {\"name\":\"anothertest\",\"number\":123}}}";
 
-        json.put("car", car);
-
-        System.out.println(json);
-
-        System.out.println(JsonParser.parseJsonObject("{\"name\":\"Max Muster\",\"car\":{\"licence\":\"ZH 12345\",\"number\":123}}"));
-
-
+        System.out.println(JsonParser.parseJsonObject(unformatedJson));
     }
 
 }

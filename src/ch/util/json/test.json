@@ -1,1 +1,22 @@
-{"name":"Max Muster","car":{"licence":"ZH 12345","number":123}}
+{
+  "array": [
+    "Hello",
+    "World",
+    {
+      "name": "Test"
+    }
+  ],
+  "name": "Max Muster",
+  "car": {
+    "licence": "ZH 12345",
+    "number": 123
+  },
+  "test": {
+    "name": "test",
+    "age": 12,
+    "anothertest": {
+      "name": "anothertest",
+      "number": 123
+    }
+  }
+}

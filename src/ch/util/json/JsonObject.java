@@ -42,7 +42,7 @@ public class JsonObject implements Map<String, Object> {
 
         if(o != null && o.getClass().isArray()) {
             jsonField = map.put(field, new JsonField<>(new JsonArray(o)));
-        } else if(isOfSimpleType(o) || o instanceof JsonObject) {
+        } else if(isOfSimpleType(o) || o instanceof JsonObject || o instanceof JsonArray) {
             jsonField = map.put(field, new JsonField<>(o));
         } else {
             jsonField = map.put(field, new JsonField<>(new JsonObject(o)));
@@ -99,7 +99,7 @@ public class JsonObject implements Map<String, Object> {
             Object value = map.get(field).getValue();
 
             if(isOfSimpleType(value) && !(value instanceof String) || value instanceof JsonObject || value instanceof JsonArray) {
-                sb.append(value);
+                sb.append(value.toString());
             } else {
                 sb.append("\"").append(value).append("\"");
             }
