@@ -7,24 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23121d41-98e2-407a-94a6-9f9e9d5fb8bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ch/util/json/Sean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/util/json/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ch/util/json/sean.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ch/util/console/ProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/console/ProgressBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/Car.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ch/util/json/JSONBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/JSONBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ch/util/json/JSONObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/JSONObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/ch/util/json/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/test.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonParseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/JsonProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/JsonProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/util/json/Sean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ch/util/json/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/Test.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -39,89 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch/util/json/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonParseException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="41" lean-forward="true" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#parseValue#0;class#JsonParser#0" />
-                <element signature="method#parseJsonArray#0;class#JsonParser#0" />
-                <element signature="method#splitJsonObjectString#0;class#JsonParser#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonProperty.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonArray.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonField.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+            <state relative-caret-position="96">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -180,7 +91,6 @@
         <option value="$PROJECT_DIR$/src/ch/util/sql/InsertQueue.java" />
         <option value="$PROJECT_DIR$/src/ch/util/console/ProgressBar.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/sean.json" />
-        <option value="$PROJECT_DIR$/src/ch/util/json/Test.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/Sean.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/JsonParseException.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/JsonArray.java" />
@@ -189,6 +99,7 @@
         <option value="$PROJECT_DIR$/src/ch/util/json/JsonObject.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/JsonParser.java" />
         <option value="$PROJECT_DIR$/src/ch/util/json/JsonProperty.java" />
+        <option value="$PROJECT_DIR$/src/ch/util/json/Test.java" />
       </list>
     </option>
   </component>
@@ -371,11 +282,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561555297533</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Json-Library Snapshot 2 (Parsing JsonObjects from String or File)">
+      <created>1561560154025</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561560154025</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69801000" />
+    <option name="totallyTimeSpent" value="69860000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -623,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/util/json/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonArray.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -657,20 +568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonObject.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonProperty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonParseException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="41" lean-forward="true" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+        <state relative-caret-position="176">
+          <caret line="14" column="30" lean-forward="true" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -687,10 +588,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonProperty.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonParseException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        <state relative-caret-position="48">
+          <caret line="3" column="41" lean-forward="true" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/util/json/JsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/util/json/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
         </state>
       </provider>
     </entry>
