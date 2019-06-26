@@ -5,7 +5,7 @@ import java.util.*;
 import static ch.util.json.JsonObject.isOfSimpleType;
 
 /**
- * @author Severin Weigold
+ * @author Severin Weigold, Noël Monnerat
  */
 
 public class JsonArray implements List<Object> {

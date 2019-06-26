@@ -1,7 +1,7 @@
 package ch.util.json;
 
 /**
- * @author Severin Weigold
+ * @author Severin Weigold, Noël Monnerat
  */
 
 public class JsonField<T> {

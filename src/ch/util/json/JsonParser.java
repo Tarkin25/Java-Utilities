@@ -7,6 +7,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Severin Weigold, Noël Monnerat
+ */
+
 class JsonParser {
 
     private static Set<Character> escapes = new HashSet<>();
@@ -53,7 +57,7 @@ class JsonParser {
         StringBuilder sb = new StringBuilder();
 
         while(scanner.hasNextLine()) {
-            sb.append(scanner.nextLine()).append("\n");
+            sb.append(scanner.nextLine());
         }
 
         return parseJsonObject(sb.toString());

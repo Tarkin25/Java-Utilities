@@ -5,36 +5,59 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @author Severin Weigold
+ * @author Severin Weigold, Noël Monnerat
  */
 
 public class JsonObject implements Map<String, Object> {
 
     private Map<String, JsonField> map = new HashMap<>();
 
+    /**
+     * Maps the given object into a JSON-Object
+     * Possibilities of mapping an object's field to a JSON-Field:
+     * <ul>
+     *     <li>Marking a field with the @{@link JsonProperty} annotation</li>
+     *     <li>Implementing a conventional getter-method for the field</li>
+     * </ul>
+     * @param object {@link Object} to be mapped into a JSON-Object
+     */
     public JsonObject(Object object) {
         JsonBuilder.setJsonFields(this, object);
     }
 
+    /**
+     * Creates an empty {@link JsonObject}
+     */
     public JsonObject() {}
 
-    public static JsonObject parse(String jsonString) {
+    /**
+     *
+     * @param jsonString {@link String} to be parsed
+     * @return {@link JsonObject}
+     * @throws JsonParseException
+     */
+    public static JsonObject parse(String jsonString) throws JsonParseException {
         return JsonParser.parseJsonObject(jsonString);
     }
 
-    public static JsonObject parse(File file) throws IOException {
+    public static JsonObject parse(File file) throws IOException, JsonParseException {
         return JsonParser.parseJsonObject(file);
     }
 
-    public Object put(String field, Object o) {
+    /**
+     *
+     * @param key {@link String} to specify the field
+     * @param object {@link Object} to be stored in the specified field
+     */
+    public Object put(String key, Object object) {
         JsonField jsonField;
 
-        if(o != null && o.getClass().isArray()) {
-            jsonField = map.put(field, new JsonField<>(new JsonArray(o)));
-        } else if(isOfSimpleType(o) || o instanceof JsonObject || o instanceof JsonArray) {
-            jsonField = map.put(field, new JsonField<>(o));
+        if(object != null && object.getClass().isArray()) {
+            jsonField = map.put(key, new JsonField<>(new JsonArray(object)));
+        } else if(isOfSimpleType(object) || object instanceof JsonObject || object instanceof JsonArray) {
+            jsonField = map.put(key, new JsonField<>(object));
         } else {
-            jsonField = map.put(field, new JsonField<>(new JsonObject(o)));
+            jsonField = map.put(key, new JsonField<>(new JsonObject(object)));
         }
 
         if(jsonField != null) {
@@ -44,8 +67,14 @@ public class JsonObject implements Map<String, Object> {
         }
     }
 
-    public <T> T get(String field) {
-        JsonField jsonField = map.get(field);
+    /**
+     *
+     * @param key {@link String} to specify the field
+     * @return The field's value, casted to the desired type
+     * @throws ClassCastException if the field's value cannot be cast to the desired type
+     */
+    public <T> T get(String key) {
+        JsonField jsonField = map.get(key);
 
         if(jsonField != null) {
             Class<T> clazz = jsonField.getType();
@@ -74,10 +103,22 @@ public class JsonObject implements Map<String, Object> {
         return o instanceof String || o instanceof Boolean || o instanceof Character || o instanceof Byte || o instanceof Short || o instanceof Integer || o instanceof Long || o instanceof Float || o instanceof Double || o == null;
     }
 
+    /**
+     * Possibilities of casting a {@link JsonObject} to an object of the desired class:
+     * <ul>
+     *  <li>Marking a field with the @{@link JsonProperty} annotation</li>
+     *  <li>Implementing a conventional setter-method for the field</li>
+     *</ul>
+     * @param clas {@link Class} to cast to
+     * @return a new instance of the given class
+     */
     public <T> T cast(Class<T> clas) {
         return JsonBuilder.cast(this, clas);
     }
 
+    /**
+     * @return a {@link String} representation of the {@link JsonObject}
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
