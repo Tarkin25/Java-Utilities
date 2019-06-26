@@ -6,15 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23121d41-98e2-407a-94a6-9f9e9d5fb8bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/console/ProgressBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/console/ProgressBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/JSONBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/JSONBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/JSONObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/JSONObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/ch/util/json/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/ch/util/json/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/Sean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/util/json/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ch/util/json/Test.java" afterDir="false" />
-    </list>
+    <list default="true" id="23121d41-98e2-407a-94a6-9f9e9d5fb8bf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/ch/util/json/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
-              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -163,7 +155,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -289,11 +281,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561560154025</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Json-Library Snapshot 2 (Parsing JsonObjects from String or File)">
+      <created>1561560183080</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561560183080</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69860000" />
+    <option name="totallyTimeSpent" value="70345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -608,7 +607,7 @@
     <entry file="file://$PROJECT_DIR$/src/ch/util/json/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
