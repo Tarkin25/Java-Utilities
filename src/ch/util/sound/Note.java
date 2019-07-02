@@ -16,7 +16,7 @@ public enum Note {
         int n = this.ordinal();
         if (n > 0) {
             double exp = ((double) n - 1) / 12d;
-            double f = 130.81 * Math.pow(2d, exp);
+            double f = 30d * Math.pow(2d, exp);
             for (int i = 0; i < sin.length; i++) {
                 double period = (double)SAMPLE_RATE / f;
                 double angle = 2.0 * Math.PI * i / period;
