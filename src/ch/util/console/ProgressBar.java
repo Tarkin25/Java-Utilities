@@ -1,5 +1,6 @@
 package ch.util.console;
 
+import ch.util.json.JsonParseException;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.Ansi.Color;
 import org.fusesource.jansi.AnsiConsole;
@@ -101,13 +102,13 @@ public class ProgressBar {
     
     public static void main(String[] args) {
         
-        ProgressBar pb = new ProgressBar(90, 100, "cyan");
+        ProgressBar pb = new ProgressBar(90, 137);
         
-        for(int i=1;i<=100;i++) {
+        for(int i=1;i<=137;i++) {
             pb.setProgress(i);
             System.out.print(pb);
             try {
-                Thread.sleep(100);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

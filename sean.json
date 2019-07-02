@@ -1,0 +1,14 @@
+{
+  "name": "Sean",
+  "cockSize": 500,
+  "age": 18,
+  "son": {
+    "name": "Davlic",
+    "smokes": true
+  },
+  "numbers": [
+    1,
+    2,
+    3
+  ]
+}

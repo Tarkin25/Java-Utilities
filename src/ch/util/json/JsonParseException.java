@@ -4,13 +4,13 @@ package ch.util.json;
  * @author Severin Weigold, Noël Monnerat
  */
 
-public class JsonParseException extends IllegalArgumentException {
+public class JsonParseException extends RuntimeException {
 
-    public JsonParseException() {
+    JsonParseException() {
         super();
     }
 
-    public JsonParseException(String s) {
+    JsonParseException(String s) {
         super(s);
     }
 
